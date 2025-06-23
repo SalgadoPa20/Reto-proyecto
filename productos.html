@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Engineer Soft - Pagina lista de Productos</title>
+
+ <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+
+    <link rel="stylesheet" href="css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="css/owl-carousel.css">
+
+    <link rel="stylesheet" href="css/lightbox.css">
+
+     <script src="db-simulacion/funciones.js"></script>
+
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+        <div id="preloader">
+            <div class="jumper">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>  
+        <!-- ***** Preloader End ***** -->
+
+        <header class="header-area header-sticky" id="header"></header>
+      
+           <!-- Inicio del contenido de la página   -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Enamorate de Nuestros Nuevos Productos</h2>
+                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Nuestra ultima coleccion</h2>
+                        <span>Echa un Vistazo a Todos Nuestros Productos.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container col-lg-9">
+            <div class="row" id="DIVproductos">
+
+        <!-- *****obtener los parametros de la URL y obtener el valor del parametro "categoria" ***** -->
+                <script>
+                    const urlParams = new URLSearchParams(window.location.search);
+                     
+                    const categoria = urlParams.get('categoria');
+                    const productos = obtenerProductos(categoria);
+                    const productosContainer = document.getElementById('DIVproductos');
+                    productos.forEach(producto => {
+                        const col = document.createElement("div");
+                        col.className = "col-md-4";
+                        col.innerHTML = `
+                          <div class="item">                            
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="detalles-producto.html?codigoProducto=${producto.codigo}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a class="btn-add" href=""><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                                </div>
+                                <div class="down-content">
+                                    <h4>${producto.nombre}</h4>
+                                    <span>$${producto.precio}</span>
+                                    <ul class="stars">
+                                        ${'<i class="text-warning fa fa-star"></i>'.repeat(producto.calificacion)}
+                                        ${'<i class="text-muted fa fa-star"></i>'.repeat(5 - producto.calificacion)}
+                                    </ul>
+                                </div>                                                    
+                            </div>
+                            `;
+                            productosContainer.appendChild(col);
+
+                            col.querySelector(".btn-add").addEventListener('click', (e) => {
+                                e.preventDefault(); // Evita navegación si hay href
+                                agregarProducto(producto);
+                            });
+                        });
+                               
+                    </script>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="pagination">
+                        <ul>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Inicio de carrito de compras ***** -->
+            <div class="col-lg-3 bg-light p-5">
+                <h3 class="h3 pb-2">Carrito de Compras</h3>
+                <!-- Precio total -->
+                <p class="text-right pb-2">Total: $ <span id="total"></span></p>
+                <!-- Elementos del carrito -->
+                <ul id="carrito" class="list-group"></ul>
+ 
+                <!--  -->
+                <div id="boton-vaciar" class="btn btn-danger text-decoration-none" onclick="vaciarCarrito()">Vaciar</div>
+                <div class="btn btn-success text-decoration-none" id="boton-pagar">
+                    <a class="text-decoration-none btn-success text-white"  href="pago.html" target="target_blank">Pagar</a>
+                </div>
+            </div>
+
+       <script>
+        mostrarCarrito();
+       </script>
+       
+        </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+    
+ <!-- Fin del contenido de la página   -->
+
+        <footer id="footer"></footer> 
+
+<!-- jQuery -->
+    <script src="js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/accordions.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imgfix.min.js"></script> 
+    <script src="js/slick.js"></script> 
+    <script src="js/lightbox.js"></script> 
+    <script src="js/isotope.js"></script> 
+    
+    <!-- Global Init -->
+    <script src="js/custom.js"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarFragmento("header", "header.html");
+            cargarFragmento("footer", "footer.html");
+        });
+    </script>
+
+</body>
+</html>
+
+ 

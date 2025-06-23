@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Engineer Soft - Pagina Detalles del producto</title>
+
+ <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+
+    <link rel="stylesheet" href="css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="css/owl-carousel.css">
+
+    <link rel="stylesheet" href="css/lightbox.css">
+
+     <script src="db-simulacion/funciones.js"></script>
+     
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+        <div id="preloader">
+            <div class="jumper">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>  
+        <!-- ***** Preloader End ***** -->
+
+        <header class="header-area header-sticky" id="header"></header>
+      
+           <!-- Inicio del contenido de la página   -->
+
+ <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Pagina de un solo producto</h2>
+                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** Product Area Starts ***** -->
+    <section class="bg-light">
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-ing img-fluid" src="" alt="Card image cap" id="imagenProducto">
+                </div>
+            </div>
+            <div class="col-lg-7 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="h2" id="nombreProducto"></h1>
+                    <p class="h3 py-2" id="precioProducto"></p>
+                    <p class="py-2" id="clasificacionProducto"></p>
+
+                    <h6> Contenido</h6>
+                    <ul class="list-unstyled pb-3" id="contenidoProducto"></ul>
+
+                    <div class="row pb-3">
+                        <div class="col d-grid">
+                            <a class="btn btn-success btn-lg" name="submit" value="buy" href="#" id="botonAgregar">Agregar</a>
+                        </div>
+                        <div class="col d-grid">
+                            <button class="btn btn-success btn-lg" name="submit" value="addtocard" onclick="window.history.back()">Regresar</button>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- ***** Product Area Ends ***** -->
+
+<script>
+    //Obtener el parametro de la Url
+    const urlParams = new URLSearchParams (window.location.search);
+    const codigoProducto = urlParams.get('codigoProducto');
+
+    //Obtener del localStorage el producto por su codigo
+    const producto = obtenerProductoPorCodigo(codigoProducto);
+
+    //mostrar los datos del producto en la pagina
+    if (producto) {
+        document.getElementById('nombreProducto').textContent = producto.nombre;
+        document.getElementById('precioProducto').textContent = `$${producto.precio.toFixed(2)}`;
+        document.getElementById('imagenProducto').src = producto.imagen;
+        document.getElementById('descripcionProducto').textContent = producto.descripcion;
+
+        const contenidoProductoDiv = document.getElementById('contenidoProducto');
+
+        const estrellas = '<i class="text-warning fa fa-star"></i>'.repeat(producto.calificacion) +
+                          '<i class="text-secundary fa fa-star"></i>'.repeat(5 - producto.calificacion);
+        document.getElementById('clasificacionProducto').innerHTML = estrellas;
+    }
+
+    // se asigna el manejador del evento del boton "Agregar"
+     document.getElementById('botonAgregar').addEventListener('click', function(){
+        agregarProducto(producto, false);
+        window.history.back();
+     })
+
+</script>
+
+            <!-- Fin del contenido de la página   -->
+
+        <footer id="footer"></footer> 
+
+<!-- jQuery -->
+    <script src="js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/accordions.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imgfix.min.js"></script> 
+    <script src="js/slick.js"></script> 
+    <script src="js/lightbox.js"></script> 
+    <script src="js/isotope.js"></script> 
+    
+    <!-- Global Init -->
+    <script src="js/custom.js"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            cargarFragmento("header", "header.html");
+            cargarFragmento("footer", "footer.html");
+        });
+    </script>
+
+</body>
+</html>
