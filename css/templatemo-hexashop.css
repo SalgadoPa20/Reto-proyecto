@@ -44,6 +44,13 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+.carousel.slide {
+  margin-top: 80px; 
+  }
+.text-banner{
+   padding-left: 50px;
+  }
+
 .clearfix:after {
   content: ".";
   display: block;
@@ -1576,7 +1583,7 @@ Products Page
 .page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/products-page-heading.jpg);
+  background-image: url(../images/baner-right-image-04.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

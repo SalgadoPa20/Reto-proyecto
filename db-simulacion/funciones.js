@@ -16,6 +16,11 @@ function  obtenerCategorias() {
     return map.values();
 }
 
+// Devolver la lista del banners almacenadas en el localStorage
+function  obtenerBanners() {
+    return Array.from(obtenerMap("banners").values());
+}
+
 // Devolver la lista de productos almacenados en el localStorage
 function  obtenerProductos(categoria = "todos") {
 
