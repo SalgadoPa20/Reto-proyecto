@@ -1,46 +1,43 @@
-   <!-- ***** Header Area Start ***** -->
  
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="images/NameDanna.jpeg" width="50%" height="80%">
-                        </a>
-                        <!-- ***** Logo End ***** --> 
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="index.html" class="active">Inicio</a></li>
-                            <li class="scroll-to-section"><a href="#women">Ropa de Mujer</a></li>
-                            <li class="scroll-to-section"><a href="#men">Ropa de Hombre</a></li>
-                            <li class="scroll-to-section"><a href="#kids">Ropa de Niños</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Páginas</a>
-                                <ul>
-                                    <li><a href="index.html">Inicio</a></li>
-                                    <li><a href="acerca.html">Acerca de</a></li>
-                                    <li><a href="productos.html">Productos</a></li>
-                                    <li><a href="contacto.html">Contactame</a></li>
-                                </ul>
-                            </li>
-                        </ul>        
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+  <!-- ***** Header Area Start ***** -->
+ 
+  <div class="container">
+          <div class="row">
+              <div class="col-12">
+                <nav class="main-nav">
+  
+    <!-- ***** Logo Start ***** -->
+                  <a href="index.html" class="logo">
+                    <img src="images/NameDanna.jpeg" style="max-height: 60px;">
+                   </a>
 
-                    <script>
-                        const contadorCarrito = sessionStorage.getItem("contadorCarrito") 
+     <!-- Menú de navegación -->
+                   <ul class="nav">
+                       <li><a href="index.html">Inicio</a></li>
+                       <li><a href="acerca.html">Acerca</a></li>
+                       <li><a href="productos.html">Productos</a></li>
+                       <li><a href="contacto.html">Contáctame</a></li>
+                  </ul>
+
+             <a class="menu-trigger"><span>Menú</span></a>
+          </nav>
+      </div>
+    </div>
+  </div>
+
+ <script>
+         document.querySelector('.menu-trigger').addEventListener('click', function () {
+         document.querySelector('.main-nav').classList.toggle('active');
+         });
+  </script>
+                   
+               
+<!-- ***** Header Area End ***** -->
+   
+<script>
+  const contadorCarrito = sessionStorage.getItem("contadorCarrito") ;
+</script>
 
 
-
-                    </script>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
 
     
