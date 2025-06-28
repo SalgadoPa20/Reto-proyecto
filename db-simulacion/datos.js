@@ -3,7 +3,7 @@
 categorias = {
     "101" : { nombre: "Ropa Femenina", descripcion: "Ropa para Dama de ultima colección: vestidos, blusas, pantalones, enterizos y conjuntos, vestidos de bano", imagen: "images/women-02.jpg" },
     "102" : { nombre: "Ropa Masculina", descripcion: "Ropa para Hombres de ultima colección: camisas, pantalones, chaquetas, jeans", imagen: "images/men-02.jpg"  },
-    "103" : { nombre: "Ropa para Niños", descripcion: "Ropa para Niños de ultima colección: vestidos, blusas, camisas, pantalones, enterizos,", imagen: "images/baner-right-image-03.jpg"  },
+    "103" : { nombre: "Ropa Para Niños", descripcion: "Ropa para Niños de ultima colección: vestidos, blusas, camisas, pantalones, enterizos,", imagen: "images/baner-right-image-03.jpg"  },
     "104" : { nombre: "Accesorios", descripcion: "Accesorios para toda ocasion de la ultima colección: bolsos y carteras, bisuteria, correas, gafas de sol, billeteras,", imagen: "images/baner-right-image-04.jpg"  },
 };
 
