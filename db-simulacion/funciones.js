@@ -22,17 +22,36 @@ function  obtenerBanners() {
 }
 
 // Devolver la lista de productos almacenados en el localStorage
-function  obtenerProductos(categoria = "todos") {
+function  obtenerProductos(filtro = "todos", pagina = 1) {
 
     const map = obtenerMap("productos");
-    let productos = [];
-    if(categoria == null || categoria === "todos") {
-        productos = map.values();
+    const todos = map.values();
+    let filtrados = [];
+    if(filtro == null || filtro === "todos") {
+        filtrados = todos;
     } else {
-        productos = map.values().filter(pro => prod.categoria === categoria);
+        filtrados = todos.filter(producto => producto.categoria === filtro);
     }
-    return productos;
- }
+    const inicial = (pagina - 1) * 6;
+    const final = pagina * 6;
+    if(final > filtrados.length) {
+        final = filtrados.length;
+    }
+    console.log(`Mostrando cursos de la página ${pagina} (${inicial} a ${final})`);
+    return Array.from(filtrados).slice(inicial, final);
+}
+
+// funcion de contrar productos
+function contarProductos(filtro = "todos") {
+    const map = obtenerMap("productos");
+    if (filtro == null || filtro === "todos") {
+        return map.size;
+    } else {
+        return Array.from(map.values()).filter(producto => producto.categoria === filtro).length;
+    }
+}
+
+
 
  // Obtener el carrito de compras almacenado en sessionStorage
 function obtenerCarrito() {
