@@ -118,11 +118,12 @@ function vaciarCarrito() {
     mostrarCarrito();
 }
 
-function obtenerProductoPorCodigo(codigoProducto) {
-    const productos = obtenerMap("productos");
-    const respuesta = productos.get(codigoProducto);
-    if (!respuesta){
-        throw new Error(`No se encontro el producto con el codigo: ${codigoProducto}`);
+//Función que obtiene la información de un producto o servicio específico por código
+function buscarProducto(codigo) {
+    const map = obtenerMap("productos");
+    const producto = map.get(codigo);
+    if (!producto) {
+        throw new Error(`No se encontró el producto con el código: ${codigo}`);
     }
-    return respuesta;
+    return producto;
 }
