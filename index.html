@@ -172,11 +172,42 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            cargarFragmento("header", "header.html");
-            cargarFragmento("footer", "footer.html");
+        function cargarFragmento(id, archivo, callback) {
+          fetch(archivo)
+          .then(response => response.text())
+          .then(html => {
+            document.getElementById(id).innerHTML = html;
+            if (callback) callback(); // Ejecuta función extra si se pasa
         });
-    </script>
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+       cargarFragmento("header", "header.html", () => {
+         const menuTrigger = document.querySelector(".menu-trigger");
+         const nav = document.querySelector(".main-nav .nav");
+
+       if (menuTrigger && nav) {
+      // Mostrar/ocultar menú
+         menuTrigger.addEventListener("click", () => {
+           menuTrigger.classList.toggle("active");
+           nav.classList.toggle("active");
+      });
+
+      // Cerrar menú al hacer clic en un enlace
+           nav.querySelectorAll("a").forEach(link => {
+           link.addEventListener("click", () => {
+             menuTrigger.classList.remove("active");
+             nav.classList.remove("active");
+           });
+        });
+      }
+    });
+
+  // Puedes cargar también el footer si lo tienes
+  cargarFragmento("footer", "footer.html");
+}); 
+  
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     

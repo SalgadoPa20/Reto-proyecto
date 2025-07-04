@@ -127,3 +127,4 @@ function buscarProducto(codigo) {
     }
     return producto;
 }
+
