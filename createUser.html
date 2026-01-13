@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+</head>
+<body>
+
+<form id="createUserForm">
+    <div>
+        <label>Nombre Completo</label>
+        <input type="text" name="Nombre_completo" required>
+    </div>
+
+    <div>
+        <label>Correo electronico</label>
+        <input type="text" name="Correo_electronico" required>
+    </div>
+
+    <div>
+       <label for="tipo_documento">Selecciona el documento:</label>
+       <select name="documento" id="TI">
+            <option value="Cedula">Cedula</option>
+            <option value="pasaporte">pasaporte</option>
+            <option value="Otros">Otros</option>
+       </select>
+    </div>
+
+    <div>
+        <label>Número Documento</label>
+        <input type="text" name="numero_documento" required>
+    </div>
+
+
+    
+    <div>
+        <label>Telefono </label>
+        <input type="text" name="Telefono" required>
+        </div>
+    <div>
+
+    <div>
+        <label>Direccion</label>
+        <input type="text" name="direccion" required>
+    </div>
+
+    <div>
+        <label>Usuario</label>
+        <input type="text" name="usuario" required>
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" required>
+    </div>
+
+    <button type="submit">Crear Usuario</button>
+</form>
+
+<script src="js/createUser.js"></script>
+</body>
+</html>
