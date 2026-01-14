@@ -4,8 +4,14 @@ document
     e.preventDefault();
 
     const formData = new FormData(this);
-    let a;
+
     console.log({ formData });
+
+    // Debug real
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
     fetch("controller/account/createUser.php", {
       method: "POST",
       body: formData,
