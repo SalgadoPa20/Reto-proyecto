@@ -7,5 +7,5 @@ CREATE TABLE Cliente (
     Usuario VARCHAR(20) NOT NULL,
     Tipo_documento VARCHAR(20) NOT NULL,
     Numero_documento VARCHAR(20) NOT NULL,
-    Contrasena VARCHAR(20) NOT NULL
+    Contrasena VARCHAR(255) NOT NULL
 );
