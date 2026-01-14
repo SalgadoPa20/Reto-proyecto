@@ -1,23 +1,26 @@
-document.getElementById("createUserForm").addEventListener("submit", function (e) {
+document
+  .getElementById("createUserForm")
+  .addEventListener("submit", function (e) {
     e.preventDefault();
 
     const formData = new FormData(this);
-let a;
+    let a;
+    console.log({ formData });
     fetch("controller/account/createUser.php", {
-        method: "POST",
-        body: formData
+      method: "POST",
+      body: formData,
     })
-    .then(response => response.json())
-    .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.success) {
-            alert("Usuario creado correctamente");
-            this.reset();
+          alert("Usuario creado correctamente");
+          this.reset();
         } else {
-            alert("Error: " + data.message);
+          alert("Error: " + data.message);
         }
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         console.error("Error:", error);
         alert("Error en la petición");
-    });
-});
+      });
+  });
