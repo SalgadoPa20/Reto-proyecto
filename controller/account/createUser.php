@@ -1,45 +1,163 @@
 <?php
+
+// para el post
+
+<?php
+
 require_once "../../model/conection/conectDb.php";
 
 header('Content-Type: application/json');
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-// error_log(print_r($_POST, true));
-    $nombre = $_POST["nombre_completo"] ?? '';
-    $celular = $_POST["celular"] ?? '';
-    $tipo_documento = $_POST["tipo_documento"] ?? '';
-    $numero_documento = $_POST["numero_documento"] ?? '';
-    $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+// 🔒 SOLO POST
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    echo json_encode([
+        "success" => false,
+        "message" => "Método no permitido"
+    ]);
+    exit;
+}
 
-    $sql = "INSERT INTO usuarios 
-            (nombre_completo, celular, tipo_documento, numero_documento, password)
-            VALUES (?, ?, ?, ?, ?)";
+/**
+ * 1️⃣ VALIDACIÓN BÁSICA
+ */
+$required = [
+    'nombre_completo',
+    'correo',
+    'telefono',
+    'direccion',
+    'usuario',
+    'tipo_documento',
+    'numero_documento',
+    'password'
+];
 
-    $stmt = $mysqli->prepare($sql);
-
-    if (!$stmt) {
+foreach ($required as $field) {
+    if (empty($_POST[$field])) {
+        http_response_code(400);
         echo json_encode([
             "success" => false,
-            "message" => "Error en prepare"
+            "message" => "Campo requerido: $field"
         ]);
         exit;
     }
-
-    $stmt->bind_param(
-        "sssss",
-        $nombre,
-        $celular,
-        $tipo_documento,
-        $numero_documento,
-        $password
-    );
-
-    if ($stmt->execute()) {
-        echo json_encode(["success" => true]);
-    } else {
-        echo json_encode([
-            "success" => false,
-            "message" => $stmt->error
-        ]);
-    }
 }
+
+/**
+ * 2️⃣ ASIGNAR VARIABLES
+ */
+$nombre     = trim($_POST['nombre_completo']);
+$correo     = trim($_POST['correo']);
+$telefono   = trim($_POST['telefono']);
+$direccion  = trim($_POST['direccion']);
+$usuario    = trim($_POST['usuario']);
+$tipo_doc   = trim($_POST['tipo_documento']);
+$num_doc    = trim($_POST['numero_documento']);
+$contrasena = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+/**
+ * 3️⃣ INSERT
+ */
+$sql = "INSERT INTO Cliente
+        (Nombre_completo, Correo_electronico, Telefono, Direccion, Usuario,
+         Tipo_documento, Numero_documento, Contrasena)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = $mysqli->prepare($sql);
+
+if (!$stmt) {
+    http_response_code(500);
+    echo json_encode([
+        "success" => false,
+        "message" => "Error en prepare",
+        "error"   => $mysqli->error
+    ]);
+    exit;
+}
+
+$stmt->bind_param(
+    "ssssssss",
+    $nombre,
+    $correo,
+    $telefono,
+    $direccion,
+    $usuario,
+    $tipo_doc,
+    $num_doc,
+    $contrasena
+);
+
+if ($stmt->execute()) {
+    http_response_code(201);
+    echo json_encode([
+        "success" => true,
+        "id_cliente" => $stmt->insert_id
+    ]);
+} else {
+    http_response_code(500);
+    echo json_encode([
+        "success" => false,
+        "message" => "Error al insertar",
+        "error"   => $stmt->error
+    ]);
+}
+
+// para datos quemados prueba
+// require_once "../../model/conection/conectDb.php";
+
+// header('Content-Type: application/json');
+
+// // DATOS QUEMADOS (PRUEBA)
+// $nombre     = "Usuario Prueba dos";
+// $correo     = "prueba02@email.com";
+// $telefono   = "3001234567";
+// $direccion  = "Calle 123 #45-67";
+// $usuario    = "usuario_prueba02";
+// $tipo_doc   = "CC";
+// $num_doc    = "223456789";
+// $contrasena = password_hash("123456", PASSWORD_BCRYPT);
+
+// $sql = "INSERT INTO Cliente
+//         (Nombre_completo, Correo_electronico, Telefono, Direccion, Usuario,
+//          Tipo_documento, Numero_documento, Contrasena)
+//         VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+// $stmt = $mysqli->prepare($sql);
+
+// if (!$stmt) {
+//     http_response_code(500);
+//     echo json_encode([
+//         "success" => false,
+//         "message" => "Error en prepare",
+//         "error"   => $mysqli->error
+//     ]);
+//     exit;
+// }
+
+// $stmt->bind_param(
+//     "ssssssss",
+//     $nombre,
+//     $correo,
+//     $telefono,
+//     $direccion,
+//     $usuario,
+//     $tipo_doc,
+//     $num_doc,
+//     $contrasena
+// );
+
+// if ($stmt->execute()) {
+//     echo json_encode([
+//         "success" => true,
+//         "id_cliente" => $stmt->insert_id
+//     ]);
+// } else {
+//     http_response_code(500);
+//     echo json_encode([
+//         "success" => false,
+//         "message" => "Error al insertar",
+//         "error"   => $stmt->error
+//     ]);
+// }
+
+
