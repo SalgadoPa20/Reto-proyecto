@@ -2,7 +2,7 @@
 
 // para el post
 
-<?php
+
 
 require_once "../../model/conection/conectDb.php";
 
