@@ -1,8 +1,5 @@
 <?php
 
-// para el post
-
-
 
 require_once "../../model/conection/conectDb.php";
 
@@ -42,6 +39,7 @@ foreach ($required as $field) {
         exit;
     }
 }
+
 
 /**
  * 2️⃣ ASIGNAR VARIABLES
@@ -101,63 +99,3 @@ if ($stmt->execute()) {
         "error"   => $stmt->error
     ]);
 }
-
-// para datos quemados prueba
-// require_once "../../model/conection/conectDb.php";
-
-// header('Content-Type: application/json');
-
-// // DATOS QUEMADOS (PRUEBA)
-// $nombre     = "Usuario Prueba dos";
-// $correo     = "prueba02@email.com";
-// $telefono   = "3001234567";
-// $direccion  = "Calle 123 #45-67";
-// $usuario    = "usuario_prueba02";
-// $tipo_doc   = "CC";
-// $num_doc    = "223456789";
-// $contrasena = password_hash("123456", PASSWORD_BCRYPT);
-
-// $sql = "INSERT INTO Cliente
-//         (Nombre_completo, Correo_electronico, Telefono, Direccion, Usuario,
-//          Tipo_documento, Numero_documento, Contrasena)
-//         VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-// $stmt = $mysqli->prepare($sql);
-
-// if (!$stmt) {
-//     http_response_code(500);
-//     echo json_encode([
-//         "success" => false,
-//         "message" => "Error en prepare",
-//         "error"   => $mysqli->error
-//     ]);
-//     exit;
-// }
-
-// $stmt->bind_param(
-//     "ssssssss",
-//     $nombre,
-//     $correo,
-//     $telefono,
-//     $direccion,
-//     $usuario,
-//     $tipo_doc,
-//     $num_doc,
-//     $contrasena
-// );
-
-// if ($stmt->execute()) {
-//     echo json_encode([
-//         "success" => true,
-//         "id_cliente" => $stmt->insert_id
-//     ]);
-// } else {
-//     http_response_code(500);
-//     echo json_encode([
-//         "success" => false,
-//         "message" => "Error al insertar",
-//         "error"   => $stmt->error
-//     ]);
-// }
-
-

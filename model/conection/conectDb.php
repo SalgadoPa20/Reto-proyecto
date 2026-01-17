@@ -1,8 +1,8 @@
 <?php
 
-$host = 'mysql'; // nombre del servicio en docker-compose
-$user = getenv('MYSQL_USER') ?: 'app_user';
-$pass = getenv('MYSQL_PASSWORD') ?: 'secret';
+$host = 'localhost'; 
+$user = getenv('MYSQL_USER') ?: 'root';
+$pass = getenv('MYSQL_PASSWORD') ?: '';
 $db   = getenv('MYSQL_DATABASE') ?: 'reto';
 
 $mysqli = new mysqli($host, $user, $pass, $db);
@@ -17,5 +17,4 @@ if ($mysqli->connect_errno) {
     exit;
 }
 
-// Opcional pero recomendado
 $mysqli->set_charset("utf8mb4");
