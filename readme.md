@@ -9,4 +9,7 @@ docker-compose up -d --build
 
 http://localhost:8080/createUser.html
 
+phpmyadmin
+http://localhost:8081/
+
 docker rm -f phpmyadmin

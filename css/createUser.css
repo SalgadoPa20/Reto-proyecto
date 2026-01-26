@@ -1,0 +1,48 @@
+.btn-create{
+    background-color: #ff99D8;
+    border-radius: 5px;
+    border: #ff99D8;
+    color: black;
+    width: 50%;
+    margin-left: 25%;
+}
+.title-container{
+    text-align: center;
+    .title{
+        color: #7B75F3;
+    }
+}
+
+.text-form{
+     color: #ff99D8;    
+}
+.logo-create{
+    .danna{
+        width: 30%;
+    }
+    
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin:  5% 20% 20% 20%;
+}
+
+.form-grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.btn-full {
+  grid-column: span 2; /* el botón ocupa las 2 columnas */
+  padding: 10px;
+  font-size: 16px;
+}
