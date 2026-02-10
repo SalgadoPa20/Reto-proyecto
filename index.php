@@ -1,0 +1,219 @@
+<?php
+require_once "middleware/auth.php";
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Engineer Soft</title>
+
+ <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+
+    <link rel="stylesheet" href="css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="css/owl-carousel.css">
+
+    <link rel="stylesheet" href="css/lightbox.css">
+
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+        
+    <script src="db-simulacion/datos.js"></script>
+    <script src="db-simulacion/funciones.js"></script>
+
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+        <div id="preloader">
+            <div class="jumper">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>  
+        <!-- ***** Preloader End ***** -->
+
+  <header class="header-area header-sticky" id="header"></header>
+
+        <!-- Inicio del contenido de la página   -->
+        
+          <!-- Start Banner -->
+    <div id="bannerCarrusel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-indicators" id="carousel-indicators"></div>
+        <div class="carousel-inner" id="carousel-content" style="background-color: #f7c6e2; height: 350px;"></div>
+
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarrusel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-success rounded-circle"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarrusel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-success rounded-circle"></span>
+        </button>
+        </div>
+ 
+    <script>
+    const banners = obtenerBanners();
+
+    const carouselContent = document.getElementById("carousel-content");
+    const indicators = document.getElementById("carousel-indicators");
+
+    banners.forEach((banner, index) => {
+      // Indicadores
+      const indicator = document.createElement("button");
+      indicator.type = "button";
+      indicator.setAttribute("data-bs-target", "#bannerCarrusel");
+      indicator.setAttribute("data-bs-slide-to", index);
+      if (index === 0) indicator.classList.add("active");
+      indicators.appendChild(indicator);
+
+       // Slide
+      const item = document.createElement("div");
+      item.className = "carousel-item" + (index === 0 ? " active" : "");
+      item.innerHTML = `
+        <div class="container py-5">
+          <div class="row align-items-center">
+            <div class="col-md-6 ps-5">
+              <h1>${banner.titulo}</h1>
+              <p>${banner.descripcion}</p>
+            </div>
+            <div class="col-md-6 text-center">
+              <img src="${banner.imagen}" class="img-fluid rounded" style="max-height: 200px;">
+            </div>
+          </div>
+        </div>
+      `;
+      carouselContent.appendChild(item);
+    });
+  </script>
+
+         <!-- ***** Start productos del mes ***** -->
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 style="color : #ee8faf;">DANNA DANNA </h1> 
+                        <P>
+                        Diseños que inspiran, colores que enamoran y detalles que hacen la diferencia. Siente la libertad de vestir como eres y expresa tu personalidad con estilo.
+                        ¡Atrévete a destacar, porque tu mejor accesorio siempre será tu confianza!
+                        </P>
+                </div>
+        </div>
+        <div class="row" id="categorias">
+        </div>
+    </section>
+
+   <script>
+        const categorias = obtenerCategorias();
+        categorias.forEach(cat => {
+            const tarjeta = document.createElement('div');
+            tarjeta.className = 'col-12 col-lg-3 col-md-4 col-sm-6 p-5 mt-3';
+            tarjeta.innerHTML = `
+                <a href="#"><img src="${cat.imagen}" class="rounded img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">${cat.nombre}</h5>
+                <p class="text-center">${cat.descripcion}</p>
+                <p class="text-center"><a class="btn btn-success" href="productos.html?categorias="${cat.codigo}">Comprar</a></p>
+            `;
+            document.getElementById('categorias').appendChild(tarjeta);
+        });
+    </script>
+    <!-- End Categories of The Month -->
+
+     <!-- Fin del contenido de la página   -->
+
+        <footer id="footer"></footer> 
+
+<!-- jQuery -->
+    <script src="js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/accordions.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imgfix.min.js"></script> 
+    <script src="js/slick.js"></script> 
+    <script src="js/lightbox.js"></script> 
+    <script src="js/isotope.js"></script> 
+    
+    <!-- Global Init -->
+    <script src="js/custom.js"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+
+    <script>
+        function cargarFragmento(id, archivo, callback) {
+          fetch(archivo)
+          .then(response => response.text())
+          .then(html => {
+            document.getElementById(id).innerHTML = html;
+            if (callback) callback(); // Ejecuta función extra si se pasa
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+       cargarFragmento("header", "header.html", () => {
+         const menuTrigger = document.querySelector(".menu-trigger");
+         const nav = document.querySelector(".main-nav .nav");
+
+       if (menuTrigger && nav) {
+      // Mostrar/ocultar menú
+         menuTrigger.addEventListener("click", () => {
+           menuTrigger.classList.toggle("active");
+           nav.classList.toggle("active");
+      });
+
+      // Cerrar menú al hacer clic en un enlace
+           nav.querySelectorAll("a").forEach(link => {
+           link.addEventListener("click", () => {
+             menuTrigger.classList.remove("active");
+             nav.classList.remove("active");
+           });
+        });
+      }
+    });
+
+  // Puedes cargar también el footer si lo tienes
+  cargarFragmento("footer", "footer.html");
+}); 
+  
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
