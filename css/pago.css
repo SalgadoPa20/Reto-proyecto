@@ -1,69 +1,57 @@
-   .btn-pago{
-     background-color: #ff99D8;
-     border-radius: 5px;
-     border: #ff99D8;
-     color: black;
-     width: 100%;
+   .background-page {
+    min-height: 100vh;
+    background-image: url("../images/compras-02.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
 
+    .logo-top {
+     position: absolute;
+     top: 20px;
+     left: 30px;
+     z-index: 10;
+    }
+
+    .logo-top img {
+     width: 50%;
+    }
+
+    .pago-content {
+     background: white;
+     padding: 30px 40px;
+     border-radius: 20px;
+     width: 100%;
+     max-width: 700px;
+     box-shadow: none;
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+    }
+   
     .title-pago{ 
      color: #7B75F3;
      font-weight: bold;
      text-align: center;
-     margin-bottom: 30px;
     }
 
     .text-form{
      color: #ff99D8; 
-     font-size: 13px;
+     font-size: 17px;
      margin-bottom: 6px;
      }
 
-     .logo-create {
-     width: 30%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     }
-
-     .logo-create .danna {
-      max-width: 80%;
-      height: auto;
-    }
-
     .form-grid {
      display: grid;
-     grid-template-columns: 1fr;  /*una sola columna */
-     gap: 18px;
+     grid-template-columns: 1fr 1fr;  /*dos columnas */
+     gap: 20px 30px;
      width:100%;
-     max-width: 400px;
     }
-
-   .pago-layout {
-   display: flex;
-   min-height: 100vh;
-}
-
-.pago-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centra vertical */
-  align-items: center;     /* centra horizontal */
-}
-
-.linea-separadora {
-   width: 1px;
-   height: 80%;
-   align-self: center;
-   background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(0, 0, 0, 0.25),
-    transparent
-  );
-  margin: 0 30px;
-}
 
     .form-grid div {
      display: flex;
@@ -76,8 +64,17 @@
       font-size: 14px;
     }
 
+     .btn-pago{
+     background-color: #ff99D8;
+     border-radius: 5px;
+     border: #ff99D8;
+     color: black;
+     width: 50%;
+     margin-left: 25%;
+    }
+
     .btn-full {
-     grid-column: span 1; /* el botón ocupa 1 columna */
+     grid-column: span 2; /* el botón ocupa 2 columnas */
      padding: 10px;
      font-size: 16px;
     }
