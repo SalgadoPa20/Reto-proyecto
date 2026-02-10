@@ -48,7 +48,7 @@
 
     .form-grid {
      display: grid;
-     grid-template-columns: 1fr 1fr;  /*dos columnas */
+     grid-template-columns: 1fr;  /*dos columnas */
      gap: 20px 30px;
      width:100%;
     }
@@ -74,7 +74,7 @@
     }
 
     .btn-full {
-     grid-column: span 2; /* el botón ocupa 2 columnas */
+     grid-column: span 2;
      padding: 10px;
      font-size: 16px;
     }
