@@ -25,7 +25,7 @@
      background: white;
       padding: 30px 40px;
      border-radius: 20px;
-     width: 100%;
+     width: 70%;
      max-width: 700px;
      box-shadow: none;
 
@@ -51,13 +51,13 @@
    grid-template-columns: 1fr 1fr;
    flex-direction: column;
   gap: 20PX 30PX;
-  width:  100%;
+  width:  80%;
 }
 
 
 .form-grid div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .form-grid input,
@@ -66,6 +66,9 @@
   font-size: 14px;
 }
 
+.form-grid .inputs {
+  flex-direction : column !important;
+}
 
 .btn-login{
     background-color: #ff99D8;
